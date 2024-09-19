@@ -48,8 +48,10 @@ public class ProductRestController {
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ProblemDetail> handleNoSuchElementException(NoSuchElementException exception) {
-        return ProblemDetail.forStatusAndDetail(
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
                 HttpStatus.NOT_FOUND,
                 "Товар не найден");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(problemDetail);
     }
 }
