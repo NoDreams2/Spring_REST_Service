@@ -1,6 +1,6 @@
 package com.example.Spring_web_application.controller;
 
-import com.example.Spring_web_application.everythingYouNeed.description.Product;
+import com.example.Spring_web_application.entity.Product;
 import com.example.Spring_web_application.payload.NewProductPayload;
 import com.example.Spring_web_application.service.ProductService;
 import lombok.RequiredArgsConstructor;
