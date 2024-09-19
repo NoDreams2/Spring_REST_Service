@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новый товар &ndash; Всё, что тебе нужно</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .error {
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* ensures padding is included in height and width */
+        }
+        textarea {
+            resize: vertical; /* allows users to resize the textarea vertically */
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a data-th-href="@{/catalogue/products/list}">&larr; К списку товаров</a>
+    <h1>Новый товар</h1>
+
+    <form method="post" data-th-action="@{/catalogue/products/create}">
+        <label>
+            Название:<br>
+            <input type="text" name="title" data-th-value="${payload?.title}" required>
+        </label>
+        <label>
+            Описание:<br>
+            <textarea name="details" rows="4" data-th-text="${payload?.details}" required></textarea>
+        </label>
+        <button type="submit">Создать</button>
+    </form>
+</div>
+</body>
+</html>

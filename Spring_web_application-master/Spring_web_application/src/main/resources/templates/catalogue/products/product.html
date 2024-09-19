@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${product.title}]] &ndash; Всё, что тебе нужно</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-delete {
+            background-color: #dc3545; /* Красный цвет для кнопки удаления */
+        }
+        .btn-delete:hover {
+            background-color: #c82333; /* Темный красный цвет на ховер */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        li {
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<a class="btn" data-th-href="@{/catalogue/products/list}">&larr; К списку товаров</a>
+
+<h1 data-th-text="${product.title}"></h1>
+<ul>
+    <li><strong>ID</strong>: <span data-th-text="${product.id}"></span></li>
+    <li><strong>Название товара</strong>: <span data-th-text="${product.title}"></span></li>
+    <li><strong>Описание товара</strong>: <span data-th-text="${product.details}"></span></li>
+</ul>
+
+<a class="btn" data-th-href="@{/catalogue/products/{productId}/edit(productId=${product.id})}">Изменить</a>
+
+<form method="post" data-th-action="@{/catalogue/products/{productId}/delete(productId=${product.id})}">
+    <button type="submit" class="btn btn-delete">Удалить</button>
+</form>
+</body>
+</html>
